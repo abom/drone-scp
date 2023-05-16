@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.source=https://github.com/appleboy/drone-scp
 LABEL org.opencontainers.image.description="Copy files and artifacts via SSH"
 LABEL org.opencontainers.image.licenses=MIT
 
-RUN apk add --no-cache ca-certificates=20220614-r4 && \
+RUN apk add --no-cache ca-certificates && \
   rm -rf /var/cache/apk/*
 
 COPY release/${TARGETOS}/${TARGETARCH}/drone-scp /bin/
