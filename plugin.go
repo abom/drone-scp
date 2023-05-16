@@ -16,6 +16,10 @@ import (
 	"github.com/fatih/color"
 )
 
+const (
+	localTarExec = "tar"
+)
+
 var (
 	errMissingHost           = errors.New("Error: missing server host")
 	errMissingPasswordOrKey  = errors.New("Error: can't connect without a private SSH key or password")
@@ -241,7 +245,7 @@ func (p *Plugin) Exec() error {
 	// run archive command
 	fmt.Println("tar all files into " + src)
 	args := p.buildTarArgs(src)
-	cmd := exec.Command(p.Config.TarExec, args...)
+	cmd := exec.Command(localTarExec, args...)
 	if p.Config.Debug {
 		fmt.Println("$", strings.Join(cmd.Args, " "))
 	}
